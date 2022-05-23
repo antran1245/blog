@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("http://127.0.0.1:27017/db_name", {
+mongoose.connect("mongodb://127.0.0.1:27017/blogs", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
