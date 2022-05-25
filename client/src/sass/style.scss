@@ -1,7 +1,40 @@
 .navbar {
     background-color: #1A3C40;
-    p {
-        font-size: larger;
+    .link {
+        color: white;
+        text-decoration: none;
         font-weight: bolder;
+    }
+}
+
+.posting {
+    background-color: #827397;
+    padding: 10px;
+    border-radius: 10px;
+    .post, .comment {
+        border-radius: 10px;
+        background-color: #EDE6DB;
+        padding: 20px;
+    }
+    .comment{
+        p {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    }
+}
+
+.account {
+    background-color: #EDE6DB;
+    padding: 10px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 10px;
+    p {
+        font-size: xx-large;
     }
 }

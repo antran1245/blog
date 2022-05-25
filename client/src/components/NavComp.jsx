@@ -1,16 +1,16 @@
 import {Navbar, Nav, Container} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import '../sass/style.scss';
 
 export default function NavComp() {
     return(
-        <Navbar expand="lg" className='navbar' variant='dark'>
-            <Container>
-                <Navbar.Brand href='/dashboard' className='justify-conent-start'><h1>BLOG</h1></Navbar.Brand>
+        <Navbar expand="sm" className='navbar' variant='dark'>
+            <Container fluid>
+                <Link to={'/dashboard'} className='justify-conent-start link'>BLOG</Link>
                 <Navbar.Toggle aria-controls='navbar-nav'/>
                 <Navbar.Collapse id='navbar-nav'  className="justify-content-md-end">
                     <Nav>
-                        <Nav.Link><p>Login</p></Nav.Link>
-                        <Nav.Link><p>Sign Up</p></Nav.Link>
+                        <Link to="/account" className='link'>Login/Sign Up</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
