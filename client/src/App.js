@@ -8,7 +8,7 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState({_id: null, username: null})
   return (
     <Wrapper.Provider value={user}>
       <BrowserRouter>

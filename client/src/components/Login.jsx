@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import { Wrapper } from './context/WrapperContext';
 
 const initialState = {username: null, password: null}
 export default function Login() {
     const [form, setForm] = useState(initialState);
     const [error, setError] = useState(initialState);
+    let {_id, username} = useContext(Wrapper);
     
     const handleLogin = async(e) => {
         e.preventDefault();
         try {
             const resp = await axios.post(`http://localhost:8000/api/users/user`, form)
             console.log(resp.data.message)
+            if(resp.data.message === "ok") {
+                {_id, username} = resp.data.user;
+                console.log(_id)
+            }
         } catch (err) {
             console.log(err)
         }
