@@ -1,8 +1,9 @@
 import { Col, Row } from 'react-bootstrap';
 import '../sass/style.scss';
+import Comment from './Comment';
 
 export default function Post(props) {
-    const {title, content, comments, created_at} = props.posting;
+    const {_id, title, content, comments, created_at} = props.posting;
     return(
         <Row className='mt-2'>
             <Col xs={12} sm={{span: 8, offset: 3}} className="posting">
@@ -14,12 +15,7 @@ export default function Post(props) {
                         {content}
                     </p>
                 </div>
-                <div className='comment mt-2'>
-                    <h5>Comments</h5>
-                    {comments.map((comment, i) => {
-                        return <p key={i}>{comment.content}</p>
-                    })}
-                </div>
+                <Comment comments={comments} id={_id}/>
             </Col>
         </Row>
     );
