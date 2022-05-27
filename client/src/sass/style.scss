@@ -4,6 +4,10 @@
         color: white;
         text-decoration: none;
         font-weight: bolder;
+        margin-left: 10px;
+    }
+    .link:hover {
+        color: #417D7A;
     }
 }
 
@@ -40,5 +44,27 @@
     border-radius: 10px;
     .title {
         font-size: xx-large;
+    }
+}
+
+.post-form {
+    background-color: #827397;
+    padding: 10px;
+    border-radius: 10px;
+    form {
+        background-color: #EDE6DB;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 10px;
+        div {
+            width: 60%;
+            margin-top: 10px;
+        }
+        .title {
+            font-size: xx-large;
+            font-weight: bold;
+        }
     }
 }

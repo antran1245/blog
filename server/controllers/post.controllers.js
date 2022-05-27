@@ -1,4 +1,5 @@
 const Post = require('../models/post.models')
+const User = require('../models/user.models')
 
 module.exports.index = (req, res) => {
     res.json({
@@ -7,12 +8,21 @@ module.exports.index = (req, res) => {
 }
 
 module.exports.createPost = (req, res) => {
-    const {title, content} = req.body;
+    const {_id, title, content} = req.body;
     Post.create({
+        user: _id,
         title,
         content
     })
-    .then(post => res.json(port))
+    .then(post => {
+        User.findOneAndUpdate(
+            {_id: _id},
+            {$push: {posts: post}})
+        .then(user => {
+            res.json(user)
+        })
+        .catch(err => res.json(err))
+    })
     .catch(err => res.json(err))
 }
 

@@ -15,7 +15,7 @@ export default function Post(props) {
                     </p>
                 </div>
                 <div className='comment mt-2'>
-                    <h4>Comments</h4>
+                    <h5>Comments</h5>
                     {comments.map((comment, i) => {
                         return <p key={i}>{comment.content}</p>
                     })}

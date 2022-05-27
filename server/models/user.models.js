@@ -20,7 +20,11 @@ const UserSchema = new mongoose.Schema({
             validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
             message: "Please enter a valid email"
         }
-    }
+    },
+    posts : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Posts"
+    }]
 }, {timestamps: true})
 
 UserSchema.pre('save', function(next) {

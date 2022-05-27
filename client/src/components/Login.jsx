@@ -2,26 +2,27 @@ import { useContext, useState } from 'react';
 import {Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 import { Wrapper } from './context/WrapperContext';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {username: null, password: null}
 export default function Login() {
     const [form, setForm] = useState(initialState);
-    const [error, setError] = useState(initialState);
-    let {_id, username} = useContext(Wrapper);
+    // const [error, setError] = useState(initialState);
+    const {setUser} = useContext(Wrapper);
+    const navigate = useNavigate();
     
     const handleLogin = async(e) => {
         e.preventDefault();
         try {
-            const resp = await axios.post(`http://localhost:8000/api/users/user`, form)
+            const resp = await axios.post(`http://localhost:8000/api/users/user`, form, {'withCredentials': true})
             console.log(resp.data.message)
             if(resp.data.message === "ok") {
-                {_id, username} = resp.data.user;
-                console.log(_id)
+                setUser(resp.data.user)
+                navigate('/dashboard')
             }
         } catch (err) {
-            console.log(err)
+            console.log("Error: ", err)
         }
-
     }
     return(
         <Col xs={12} sm={{span:4, offset: 2}}>
