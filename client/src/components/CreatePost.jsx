@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Wrapper } from './context/WrapperContext';
 
 export default function CreatePost() {
-    const [form, setForm] = useState({_id: null, title: null, content: null});
+    const [form, setForm] = useState({_id: null, content: null});
     const {user} = useContext(Wrapper); 
     const navigate = useNavigate();
 
@@ -21,15 +21,11 @@ export default function CreatePost() {
     }
     return(
         <Row className='mt-2'>
-            <Col xs={12} sm={{span: 8, offset: 3}} className="post-form">
+            <Col xs={12} sm={{span: 8, offset: 2}} className="post-form">
                 <Form className='p-3' onSubmit={handlePost}>
                     <p className='title'>Create A Post</p>
                     <Form.Group>
-                        <Form.Label>Enter A Title</Form.Label>
-                        <Form.Control type='text' name='title' onChange={(e) => setForm({...form, title: e.target.value})}/>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Enter your content</Form.Label>
+                        <Form.Label>Enter your quote</Form.Label>
                         <Form.Control as={'textarea'} rows={5} name="content"  onChange={(e) => setForm({...form, content: e.target.value})}/>
                     </Form.Group>
                     <Form.Group>

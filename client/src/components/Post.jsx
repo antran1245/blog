@@ -8,11 +8,8 @@ export default function Post(props) {
         <Row className='mt-2'>
             <Col xs={12} sm={{span: 8, offset: 3}} className="posting">
                 <div className="post">
-                    <p className='post-title'>
-                        {title}
-                    </p>
                     <p className='post-content'>
-                        {content}
+                        <em>"{content}"</em>
                     </p>
                 </div>
                 <Comment comments={comments} id={_id}/>

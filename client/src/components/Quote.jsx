@@ -18,7 +18,7 @@ export default function Quote() {
                 {
                 quote && 
                     <>
-                        <p><em>{quote.quote}</em></p>
+                        <p><em>"{quote.quote}"</em></p>
                         <p className="d-flex justify-content-end"> <b>{quote.author}</b></p>
                     </>
                 }
