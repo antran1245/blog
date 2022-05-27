@@ -1,12 +1,14 @@
 import { Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Wrapper } from './context/WrapperContext';
 
 const initialState = {username: null, password: null, confirm: null, email: null};
 export default function Register() {
     const [form, setForm] = useState(initialState)
     const [error, setError] = useState(initialState)
+    const {setUser} = useContext(Wrapper);
     const navigate = useNavigate();
 
     const handleRegister = async(e) => {
@@ -15,6 +17,7 @@ export default function Register() {
             const resp = await axios.post('http://localhost:8000/api/users/new', form)
             if(resp.status === 200) {
                 navigate('/dashboard')
+                setUser({_id: resp.data._id, username: resp.data.username})
             }
         } catch  (err) {
             console.log(err)

@@ -8,6 +8,7 @@ import {Wrapper} from './components/context/WrapperContext';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Quote from './components/Quote';
 
 function App() {
   const [user, setUser] = useState({_id: null, username: null})
@@ -27,6 +28,7 @@ function App() {
         <div className='App'>
           <Container fluid className='px-0'>
             <NavComp />
+            <Quote />
             <Routes>
               <Route path="/dashboard" element={<Dashboard/>}/>
               <Route path="/account" element={<Account />} />

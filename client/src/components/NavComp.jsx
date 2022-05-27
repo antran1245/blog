@@ -16,7 +16,7 @@ export default function NavComp() {
     return(
         <Navbar expand="sm" className='navbar p-2' variant='dark'>
             <Container fluid>
-                <Link to={'/dashboard'} className='justify-conent-start header'>BLOG</Link>
+                <Link to={'/dashboard'} className='justify-conent-start header'><em>QUOTE BLOG</em></Link>
                 <Navbar.Toggle aria-controls='navbar-nav'/>
                 <Navbar.Collapse id='navbar-nav'  className="justify-content-md-end">
                     <Nav>

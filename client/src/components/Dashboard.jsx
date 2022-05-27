@@ -15,11 +15,9 @@ export default function Dashboard() {
         }
         handleAxios()
     }, [])
-    // useEffect(()=> {
-    //     console.log(postListing)
-    // }, [postListing])
+
     return(
-        <Row>
+        <Row className="px-sm-4 px-0">
             <Col xs={12} sm={10}>
                 {postListing &&
                     postListing.map((post, i) => 
