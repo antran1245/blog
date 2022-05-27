@@ -9,7 +9,7 @@ export default function NavComp() {
     const {user, setUser} = useContext(Wrapper);
 
     const logout = () => {
-        axios.get('http://localhost:8000/api/users/logout');
+        axios.get('http://localhost:8000/api/users/logout', {'withCredentials': true});
         setUser({username: null, _id: null})
     }
 

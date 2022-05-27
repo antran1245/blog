@@ -31,10 +31,11 @@ module.exports.loginUser = async(req, res) => {
         let user = await User.findOne({username: username})
         const validPassword = await bcrypt.compare(password, user.password)
         if(validPassword) {
-            const userToken = await jwt.sign({
+            const payload = {
                 _id: user._id,
                 username: user.username
-            }, process.env.SECRET_KEY)
+            }
+            const userToken = await jwt.sign(payload, process.env.SECRET_KEY)
             res.cookie('usertoken', userToken, process.env.SECRET_KEY, {
                 httpOnly: true
             })
@@ -53,4 +54,11 @@ module.exports.loginUser = async(req, res) => {
 module.exports.logout = (req, res) => {
     res.clearCookie('usertoken');
     res.sendStatus(200);
+}
+
+module.exports.relogin = (req, res) => {
+    const {_id} = res.locals.payload;
+    User.findOne({_id: _id})
+    .then(user => res.json({message: "ok", user: {_id: user.id, username: user.username}}))
+    .catch(err => res.json(err))
 }

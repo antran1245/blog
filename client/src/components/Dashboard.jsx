@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Post from "./Post";
 import { Row, Col } from "react-bootstrap";
+import UserInfo from "./UserInfo";
 
 export default function Dashboard() {
     const [postListing, setPostListing]= useState(null)
@@ -26,9 +27,7 @@ export default function Dashboard() {
                     )
                 }
             </Col>
-            <Col xs={12} sm={2}>
-            hi
-            </Col>
+            <UserInfo />
         </Row>
     );
 }

@@ -6,10 +6,21 @@ import Account from './components/Account';
 import CreatePost from './components/CreatePost';
 import {Wrapper} from './components/context/WrapperContext';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState({_id: null, username: null})
+  
+  useEffect(() => {
+    const handleAxios = async() => {
+      let resp = await axios.get('http://localhost:8000/api/users', {'withCredentials': true})
+      if(resp.data.message === "ok") {
+        setUser(resp.data.user)
+      }
+    }
+    handleAxios()
+  }, [])
   return (
     <Wrapper.Provider value={{user, setUser}}>
       <BrowserRouter>
