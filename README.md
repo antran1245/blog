@@ -1,6 +1,8 @@
 # Objective
 
-Create a blog template website using MERN
+- Main Goal
+    - Create a blog template website using MERN
+- This is a quote blog, where users can create or quote quotes that they like and talk about.
 
 ## Running App
 - npm start
@@ -27,3 +29,7 @@ Create a blog template website using MERN
 - Create a post
 - Comment on a post
 - Cookies for Authorization
+
+## Future goals
+- Display all quotes created by a user
+- Search for quotes
