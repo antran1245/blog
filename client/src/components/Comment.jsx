@@ -1,25 +1,34 @@
-import { useState } from 'react';
-import {Form, Button} from 'react-bootstrap';
+import { useContext, useState } from 'react';
+import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
+import { Wrapper } from './context/WrapperContext';
 
 export default function Comment(props) {
     const [comments, setComments] = useState(props.comments);
     const id = props.id;
     const [show, setShow] = useState(false);
     const [content, setContent] = useState(null)
+    const {user} = useContext(Wrapper);
+
     const showForm = () => { 
         setShow(!show);
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post('http://localhost:8000/api/comments/post', {content, id})
-        setComments([...comments, {content: content, _id: id}])
-        e.target.reset();
-        setShow(false)
+        if(user._id) {
+            await axios.post('http://localhost:8000/api/comments/post', {content, id})
+            setComments([...comments, {content: content, _id: id}])
+            e.target.reset();
+            setShow(false)
+        }else {
+            alert('Required log in')
+        }
     }
+
     return(
         <div className='comment mt-2'>
-            <h5>Comments <Button onClick={showForm}>Add Comment</Button></h5>
+            <h5 className="d-flex justify-content-between">Comments 
+                <Button onClick={showForm}>Add Comment</Button></h5>
             <Form className='mb-2' style={{display: show?'block':'none'}} onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Enter your comment:</Form.Label>

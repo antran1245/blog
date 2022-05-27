@@ -1,6 +1,6 @@
 # Objective
 
-Create a blog website with MERN
+Create a blog template website using MERN
 
 ## Running App
 - npm start
@@ -17,6 +17,13 @@ Create a blog website with MERN
 - React-bootstrap
 - React JS
 - Express JS
+- Mongoose
 
 ### Database
 - MongoDB
+
+## Features
+- User login and Registration
+- Create a post
+- Comment on a post
+- Cookies for Authorization
