@@ -21,15 +21,19 @@
 
 .posting {
     background-color: #827397;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     .post, .comment {
         border-radius: 10px;
         background-color: #EDE6DB;
-        padding: 20px;
+        padding: 5px 20px;
+    }
+    .post {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .comment{
-        cursor: pointer;
         p {
             border: 1px solid black;
             padding: 10px;
@@ -58,7 +62,7 @@
 
 .post-form {
     background-color: #827397;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     form {
         background-color: #EDE6DB;
@@ -69,9 +73,6 @@
         border-radius: 10px;
         div {
             width: 80%;
-        }
-        button {
-            font-size: x-large;
         }
     }
 }
@@ -96,4 +97,13 @@
         background-color: #1A3C40;
         border-radius: 10px;
     }
+}
+
+button {
+    background-color: #417D7A !important;
+    border: none !important;
+}
+button:hover {
+    background-color: #827397 !important;
+    color: black !important;
 }

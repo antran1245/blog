@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import axios from 'axios';
-import Post from "./Post";
 import { Row, Col, Button } from "react-bootstrap";
-import UserInfo from "./UserInfo";
-import CreatePost from './CreatePost';
 import { PostContext } from "./context/PostContext";
 import { Wrapper } from "./context/WrapperContext";
+import axios from 'axios';
+import Post from "./Post";
+import UserInfo from "./UserInfo";
+import CreatePost from './CreatePost';
+import '../sass/style.scss';
 
 export default function Dashboard() {
     const [postListing, setPostListing]= useState(null)
@@ -26,7 +27,7 @@ export default function Dashboard() {
                 <Col xs={12} sm={10}>
                     <Row>
                         <Col xs={12} sm={{span: 11}} className="d-flex justify-content-end mt-2">
-                            <Button onClick={() => setShow(!show)}>Submit a Quote</Button>
+                            <Button onClick={() => setShow(!show)} className="color-btn">Submit a Quote</Button>
                         </Col>
                     </Row>
                     <CreatePost/>

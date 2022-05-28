@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import {Form, Button, Alert} from 'react-bootstrap';
+import {Form, Button, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import { Wrapper } from './context/WrapperContext';
 
@@ -32,12 +32,13 @@ export default function Comment(props) {
             <h5 className="d-flex justify-content-between">Comments 
                 <Button onClick={showForm}>Add Comment</Button></h5>
             <Form className='mb-2' style={{display: show?'block':'none'}} onSubmit={handleSubmit}>
-                <Form.Group>
-                    <Form.Label>Enter your comment:</Form.Label>
-                    <Form.Control as={'textarea'} name="content" onChange={(e) => setContent(e.target.value)}/>
-                </Form.Group>
-                <Form.Group className='mt-1 d-flex justify-content-end'>
-                    <Button className='w-50' type='submit'>Submit</Button>
+                <Form.Group as={Row}>
+                    <Col xs={12} sm={9}>
+                        <Form.Control as={'textarea'} name="content" onChange={(e) => setContent(e.target.value)}/>
+                    </Col>
+                    <Col xs={12} sm={3}>
+                        <Button className='w-100 h-100' type='submit'>Submit</Button>
+                    </Col>
                 </Form.Group>
             </Form>
             {comments.map((comment, i) => {

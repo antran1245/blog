@@ -1,7 +1,6 @@
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import '../sass/style.scss';
 import Comment from './Comment';
-import { useState } from 'react';
 
 export default function Post(props) {
     const {_id, title, content, comments, created_at} = props.posting;

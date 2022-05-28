@@ -27,8 +27,8 @@ export default function CreatePost(props) {
             <Col xs={12} sm={{span: 7, offset: 4}} className="post-form">
                 <Form className='p-3' onSubmit={handlePost}>
                     <Form.Group as={Row}>
-                        <Col xs={12} sm={10}>
-                            <Form.Control as={'textarea'} rows={2} name="content"  onChange={(e) => setForm({...form, content: e.target.value})}/>
+                        <Col xs={12} sm={9}>
+                            <Form.Control as={'textarea'} rows={2} name="content" onChange={(e) => setForm({...form, content: e.target.value})}/>
                         </Col>
                         <Col>
                             <Button className='w-100 h-100' type='submit'>Post</Button>
