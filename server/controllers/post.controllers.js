@@ -19,7 +19,7 @@ module.exports.createPost = (req, res) => {
             {_id: _id},
             {$push: {posts: post}})
         .then(user => {
-            res.json(user)
+            res.json(post)
         })
         .catch(err => res.json(err))
     })

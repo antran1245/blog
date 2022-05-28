@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import { Wrapper } from './context/WrapperContext';
@@ -13,11 +13,13 @@ export default function Comment(props) {
     const showForm = () => { 
         setShow(!show);
     }
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         if(user._id) {
-            await axios.post('http://localhost:8000/api/comments/post', {content, id})
-            setComments([...comments, {content: content, _id: id}])
+            let comment = await axios.post('http://localhost:8000/api/comments/post', {content, id})
+            console.log(comment)
+            setComments([...comments, comment.data])
             e.target.reset();
             setShow(false)
         }else {

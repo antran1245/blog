@@ -20,7 +20,7 @@ export default function NavComp() {
                 <Navbar.Toggle aria-controls='navbar-nav'/>
                 <Navbar.Collapse id='navbar-nav'  className="justify-content-md-end">
                     <Nav>
-                        <Link to="/create" className='link'>Create A Post</Link>
+                        {/* <Link to="/create" className='link'>Create A Post</Link> */}
                     {user.username? 
                         <Link to="/account" className='link' onClick={logout}>Logout</Link>:
                         <Link to="/account" className='link'>Log In/Sign Up</Link>

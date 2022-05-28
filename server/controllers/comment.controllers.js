@@ -18,7 +18,7 @@ module.exports.createComment = async(req, res) => {
             {_id: id}, 
             {$push: {comments: comment}}
             )
-        res.json({message: "added comment to post"})
+        res.json(comment)
     } catch (err) {
         res.json(err)
     }

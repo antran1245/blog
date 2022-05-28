@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import {Row, Col, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { Wrapper } from './context/WrapperContext';
+import { PostContext } from './context/PostContext';
 
-export default function CreatePost() {
+export default function CreatePost(props) {
     const [form, setForm] = useState({_id: null, content: null});
-    const {user} = useContext(Wrapper); 
-    const navigate = useNavigate();
+    const {user, postListing, setPostListing, show, setShow} = useContext(PostContext); 
 
     useEffect(() => {
         setForm({...form, _id: user._id})
@@ -15,21 +13,26 @@ export default function CreatePost() {
 
     const handlePost = async(e) => {
         e.preventDefault();
-        let post = await axios.post('http://localhost:8000/api/posts/new', form);
-        console.log(post)
-        navigate('/dashboard')
+        if(user._id) {
+            let post = await axios.post('http://localhost:8000/api/posts/new', form);
+            setPostListing([...postListing, post.data])
+            setShow(!show)
+        } else {
+            alert('Required log in')
+        }
+        // console.log(post)
     }
     return(
-        <Row className='mt-2'>
-            <Col xs={12} sm={{span: 8, offset: 2}} className="post-form">
+        <Row className='mt-2' style={{display: show? 'block': 'none'}}>
+            <Col xs={12} sm={{span: 7, offset: 4}} className="post-form">
                 <Form className='p-3' onSubmit={handlePost}>
-                    <p className='title'>Create A Post</p>
-                    <Form.Group>
-                        <Form.Label>Enter your quote</Form.Label>
-                        <Form.Control as={'textarea'} rows={5} name="content"  onChange={(e) => setForm({...form, content: e.target.value})}/>
-                    </Form.Group>
-                    <Form.Group>
-                        <Button className='w-100' type='submit'>Post</Button>
+                    <Form.Group as={Row}>
+                        <Col xs={12} sm={10}>
+                            <Form.Control as={'textarea'} rows={2} name="content"  onChange={(e) => setForm({...form, content: e.target.value})}/>
+                        </Col>
+                        <Col>
+                            <Button className='w-100 h-100' type='submit'>Post</Button>
+                        </Col>
                     </Form.Group>
                 </Form>
             </Col>

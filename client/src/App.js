@@ -32,7 +32,6 @@ function App() {
             <Routes>
               <Route path="/dashboard" element={<Dashboard/>}/>
               <Route path="/account" element={<Account />} />
-              <Route path='/create' element={<CreatePost />} />
               <Route path="" element={<Navigate to="/dashboard"/>} />
             </Routes>
           </Container>
